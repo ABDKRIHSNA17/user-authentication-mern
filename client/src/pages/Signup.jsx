@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import api from "../api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaUser, FaEnvelope, FaLock } from "react-icons/fa"; 
+
 
 const Signup = () => {
   const [userName, setUserName] = useState("");
@@ -54,7 +55,11 @@ const Signup = () => {
       navigate("/login");
     } catch (error) {
       console.log(`error is ${error.message}`);
-      toast.error("Failed to signup. Please check your input and try again.");
+      if (error.response && error.response.data && error.response.data.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("An error occurred. Please try again.");
+      }
     }
   };
 
@@ -138,8 +143,17 @@ const Signup = () => {
           >
             Sign Up
           </button>
+          <div className="mt-4 text-center">
+        <p>
+          Already have an account?{' '}
+          <Link to="/login" className="text-teal-700 hover:underline">
+            Log in here
+          </Link>
+        </p>
+      </div>
         </form>
       </div>
+      
     </div>
   );
 };

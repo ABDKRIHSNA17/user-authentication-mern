@@ -4,6 +4,8 @@ import Signup from "../src/pages/Signup";
 import Login from "../src/pages/Login";
 import Profile from "../src/component/Profile";
 import App from "../src/App";
+import Logout from "../src/pages/Logout";
+import ProtectedRoute from "../src/component/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -24,11 +26,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/logout",
-        element: <Home />,
+        element: <Logout />,
       },
       {
         path: "/profile",
-        element: <Profile />,
+        element: (
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

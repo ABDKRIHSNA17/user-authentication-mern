@@ -3,8 +3,8 @@ const bcrypt = require("bcryptjs");
 const { generateToken } = require("../utils/generateToke");
 
 
-
 module.exports.registerUser = async (req, res) => {
+  
   try {
     const { userName, email, password } = req.body;
     if (!userName || !email || !password) {
@@ -58,8 +58,8 @@ module.exports.loginUser = async (req, res) => {
   }
 };
 
-module.exports.logoutUser = (req, res) => {
+module.exports.logoutUser = async (req, res) => {
   res.clearCookie("token"); 
   res.status(200).send({ status: true, message: "Logout Successful" });
-  res.redirect('/')
 };
+

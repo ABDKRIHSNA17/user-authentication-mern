@@ -1,13 +1,16 @@
 import React from "react";
 import { Typewriter } from "react-simple-typewriter";
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight } from "react-icons/fa";
+import homeImage from "../assets/home-logo.webp";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="md:h-[calc(100vh-120px)] bg-stone-200">
-      <div className="text-2xl font-bold text-center">
-        <header className="mb-10">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4 pt-20">
+    <div className=" min-h-screen bg-stone-200 flex flex-row items-center justify-center space-x-8 px-10">
+      <div className="md:w-1/2 text-2xl font-bold text-center ">
+        <header className="mb-4">
+          <h1 className="text-4xl font-bold text-gray-800 ">
             Welcome to My Personal Page
           </h1>
           <span className="mt-6 underline decoration-dotted decoration-2 hover:scale-110 transition-transform duration-300 ease-in-out inline-block">
@@ -35,12 +38,26 @@ const Home = () => {
             opportunities to kickstart my career in tech.
           </p>
         </header>
+
+        <div className="relative">
+          <Link
+            to="/profile"
+            className="flex w-40 text-center items-center mx-auto p-2 bg-teal-900 rounded-lg text-gray-200 font-semibold text-lg hover:bg-emerald-800 hover:text-gray-700 hover:scale-105 transition-transform duration-300"
+          >
+            My Profile <FaArrowRight className="ml-2" />
+          </Link>
+        </div>
       </div>
-      <div className="relative pb-4">
-  <button className="flex items-center mx-auto p-2 bg-teal-900 rounded-lg text-gray-200 font-semibold text-lg hover:bg-emerald-800">
-    Let Go My Profile <FaArrowRight className="ml-2" />
-  </button>
-</div>
+      <div className=" hidden lg:block md:w-1/2">
+        <motion.img
+          src={homeImage}
+          alt="Home Logo"
+          className="w-full h-auto object-cover rounded-lg shadow-lg"
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+        />
+      </div>
     </div>
   );
 };
