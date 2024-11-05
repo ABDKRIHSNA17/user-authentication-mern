@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { FaUser } from 'react-icons/fa';
+import React, { useState, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { FaUser } from "react-icons/fa";
+import Logo from "./Logo";
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -24,17 +25,37 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-800 p-4">
+    <nav className="bg-gray-800 p-2">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-white text-xl font-bold">MyApp</h1>
+        <div>
+          <Logo />
+        </div>
         <ul className="flex space-x-4 items-center">
           <li>
-            <Link to="/" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Home</Link>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-white font-extrabold bg-gray-700 px-3 py-2 rounded-md"
+                  : "text-gray-400 font-medium hover:bg-stone-700 px-3 py-2 rounded-md"
+              }
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to="/profile" className="text-white hover:bg-gray-700 px-3 py-2 rounded-md">Profile</Link>
+            <NavLink
+              to="/profile"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-white font-extrabold bg-gray-700 px-3 py-2 rounded-md"
+                  : "text-gray-400 font-medium hover:bg-stone-700 px-3 py-2 rounded-md"
+              }
+            >
+              Profile
+            </NavLink>
           </li>
-          
+
           <li className="relative">
             <button
               onClick={toggleDropdown}

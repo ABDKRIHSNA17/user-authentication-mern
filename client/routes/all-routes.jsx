@@ -6,6 +6,8 @@ import Profile from "../src/component/Profile";
 import App from "../src/App";
 import Logout from "../src/pages/Logout";
 import ProtectedRoute from "../src/component/ProtectedRoute";
+import HireMeForm from "../src/pages/Contact";
+
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/logout",
         element: <Logout />,
+      },
+      {
+        path: "/contact",
+        element: <HireMeForm />,
       },
       {
         path: "/profile",

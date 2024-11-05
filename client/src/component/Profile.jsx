@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import MyProjectSection from "./MyProjectSection";
+import { motion } from "framer-motion";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Get user data from localStorage
     const storedUser = JSON.parse(localStorage.getItem("user"));
     setUser(storedUser);
   }, []);
@@ -12,10 +13,20 @@ const Profile = () => {
   if (!user) return <p>Loading...</p>;
 
   return (
-    <div>
-      <h2>Welcome, {user.name}!</h2>
-      <p>Email: {user.email}</p>
-      {/* Display other user information if needed */}
+    <div className="bg-gray-400 pt-5">
+      <div className="p-10 bg-gray-600 max-w-[300px] mx-auto rounded-xl text-center font-bold text-yellow-100">
+      <h2>Welcome , 
+        <motion.span
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 4 }}
+          className="italic"
+        >
+           {user.userName}!
+        </motion.span>
+        </h2>
+      </div>
+      <MyProjectSection />
     </div>
   );
 };
